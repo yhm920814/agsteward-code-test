@@ -3,6 +3,7 @@
 import { Roboto } from "next/font/google";
 import { TrpcProvider } from "@/server/trpc-provider";
 import "@/styles/globals.css";
+import Nav from "@/components/Nav";
 
 const roboto = Roboto({
   style: ["normal", "italic"],
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body>
         <main>
           <TrpcProvider>
+            <Nav />
             <div>{children}</div>
           </TrpcProvider>
         </main>
