@@ -4,17 +4,20 @@ import { trpc } from "@/server/rsc/trpc";
 import ProjectItem from "@/components/detail/ProjectItem";
 
 type Props = {
-  id: string | undefined;
+  id: string;
 };
 
 export default function Farm({ id }: Props) {
-  const { data: farm, isLoading } = trpc.farmerProcedeure.getById.useQuery({
-    id: id ?? "",
-  });
+  const { data: farm, isLoading } = trpc.farmerProcedeure.getById.useQuery(
+    {
+      id,
+    },
+    { enabled: !!id },
+  );
   if (isLoading) return <>Loading</>;
 
   const coordinates = farm?.managementAreasGeoJSON?.[0];
-  console.log(coordinates);
+  console.log(farm);
 
   return (
     <>

@@ -10,7 +10,7 @@ type Props = {
 
 export default function ProjectItem({ name, id, area, type }: Props) {
   return (
-    <div className="flex h-40 items-center justify-center gap-20 rounded-lg border-2 border-white bg-white p-5 shadow-sm hover:border-[#09342e] hover:shadow-md">
+    <div className="h-30 flex items-center justify-center gap-20 rounded-lg border-2 border-white bg-white p-2 shadow-sm hover:border-[#09342e] hover:shadow-md sm:h-40 sm:p-4">
       <div className="hidden h-[100px] w-[100px] flex-wrap items-center justify-center rounded-lg bg-[#808080] p-2 text-white sm:flex">
         image placeholder
       </div>

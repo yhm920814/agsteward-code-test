@@ -5,5 +5,5 @@ export default function FarmPage({
 }: {
   params: Record<string, string | undefined>;
 }) {
-  return <Farm id={params.id} />;
+  return params.id && <Farm id={params.id} />;
 }
