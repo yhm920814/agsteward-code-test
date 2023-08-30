@@ -21,7 +21,7 @@ type Farm = {
   name: string;
   phone: string;
   website: string;
-  managementAreasGeoJSON: string;
+  managementAreasGeoJSON: ManagementAreasGeoJSON[];
 };
 
 export const getAll = async () => {
@@ -31,7 +31,7 @@ export const getAll = async () => {
       return response.data.map((farm: Farm) => {
         return {
           ...farm,
-          managementAreasGeoJSON: JSON.parse(farm.managementAreasGeoJSON),
+          managementAreasGeoJSON: JSON.parse(farm.managementAreasGeoJSON as unknown as string),
         };
       });
     });
@@ -39,7 +39,7 @@ export const getAll = async () => {
 };
 
 export const getById = async (id: string) => {
-  const res: Promise<Farm[]> = await axios
+  const res: Promise<Farm> = await axios
     .get(env.API_ENDPOINT)
     .then(function (response) {
       const result = response.data
@@ -48,7 +48,7 @@ export const getById = async (id: string) => {
           return {
             ...farm,
             managementAreasGeoJSON: JSON.parse(
-              farm.managementAreasGeoJSON,
+              farm.managementAreasGeoJSON as unknown as string,
             ) as ManagementAreasGeoJSON,
           };
         });

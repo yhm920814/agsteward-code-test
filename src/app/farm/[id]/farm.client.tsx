@@ -15,6 +15,7 @@ export default function Farm({ id }: Props) {
     { enabled: !!id },
   );
   if (isLoading) return <>Loading</>;
+  if (!farm) return <>Fail to load farm data</>
 
   const coordinates = farm?.managementAreasGeoJSON?.[0];
   console.log(farm);
@@ -35,7 +36,7 @@ export default function Farm({ id }: Props) {
         <div className="mt-4 flex flex-col gap-4">
           {farm?.managementAreasGeoJSON?.map((item) => (
             <ProjectItem
-              name={item.properties.Area_name ?? item.properties.P_Area}
+              name={item.properties.Area_name ?? item.properties.P_Area ?? ""}
               id={item.properties.projID}
               area={item.properties.Area_ha}
               type={item.geometry.type}
