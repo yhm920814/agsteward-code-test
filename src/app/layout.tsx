@@ -1,6 +1,6 @@
 "use client";
 
-import { Roboto } from "next/font/google";
+import { Roboto, Nunito } from "next/font/google";
 import { TrpcProvider } from "@/server/trpc-provider";
 import "@/styles/globals.css";
 import Nav from "@/components/Nav";
@@ -12,12 +12,19 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
+const nunito = Nunito({
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-nunito",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const fontClassNames = [roboto.className].join(" ");
+  const fontClassNames = [roboto.className, nunito.variable].join(" ");
 
   return (
     <html lang="en" className={fontClassNames}>
@@ -25,7 +32,9 @@ export default function RootLayout({
         <main>
           <TrpcProvider>
             <Nav />
-            <div>{children}</div>
+            <div className="ml-auto mr-auto min-h-[calc(100vh-48px)] w-full bg-[#f2f4f7]">
+              {children}
+            </div>
           </TrpcProvider>
         </main>
       </body>

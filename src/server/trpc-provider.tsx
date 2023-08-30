@@ -21,6 +21,7 @@ export const TrpcProvider: React.FC<{ children: React.ReactNode }> = ({
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
+            cacheTime: 300000,
           },
         },
       }),
